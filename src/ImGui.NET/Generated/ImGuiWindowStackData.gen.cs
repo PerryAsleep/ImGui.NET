@@ -9,7 +9,7 @@ namespace ImGuiNET
     {
         public ImGuiWindow* Window;
         public ImGuiLastItemData ParentLastItemDataBackup;
-        public ImGuiStackSizes StackSizesOnBegin;
+        public ImGuiErrorRecoveryState StackSizesInBegin;
         public byte DisabledOverrideReenable;
     }
     public unsafe partial struct ImGuiWindowStackDataPtr
@@ -22,7 +22,7 @@ namespace ImGuiNET
         public static implicit operator ImGuiWindowStackDataPtr(IntPtr nativePtr) => new ImGuiWindowStackDataPtr(nativePtr);
         public ImGuiWindowPtr Window => new ImGuiWindowPtr(NativePtr->Window);
         public ref ImGuiLastItemData ParentLastItemDataBackup => ref Unsafe.AsRef<ImGuiLastItemData>(&NativePtr->ParentLastItemDataBackup);
-        public ref ImGuiStackSizes StackSizesOnBegin => ref Unsafe.AsRef<ImGuiStackSizes>(&NativePtr->StackSizesOnBegin);
+        public ref ImGuiErrorRecoveryState StackSizesInBegin => ref Unsafe.AsRef<ImGuiErrorRecoveryState>(&NativePtr->StackSizesInBegin);
         public ref bool DisabledOverrideReenable => ref Unsafe.AsRef<bool>(&NativePtr->DisabledOverrideReenable);
     }
 }

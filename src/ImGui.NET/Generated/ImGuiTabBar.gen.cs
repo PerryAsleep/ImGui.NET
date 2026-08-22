@@ -7,6 +7,7 @@ namespace ImGuiNET
 {
     public unsafe partial struct ImGuiTabBar
     {
+        public ImGuiWindow* Window;
         public ImVector Tabs;
         public ImGuiTabBarFlags Flags;
         public uint ID;
@@ -49,6 +50,7 @@ namespace ImGuiNET
         public static implicit operator ImGuiTabBarPtr(ImGuiTabBar* nativePtr) => new ImGuiTabBarPtr(nativePtr);
         public static implicit operator ImGuiTabBar* (ImGuiTabBarPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImGuiTabBarPtr(IntPtr nativePtr) => new ImGuiTabBarPtr(nativePtr);
+        public ImGuiWindowPtr Window => new ImGuiWindowPtr(NativePtr->Window);
         public ImPtrVector<ImGuiTabItemPtr> Tabs => new ImPtrVector<ImGuiTabItemPtr>(NativePtr->Tabs, Unsafe.SizeOf<ImGuiTabItem>());
         public ref ImGuiTabBarFlags Flags => ref Unsafe.AsRef<ImGuiTabBarFlags>(&NativePtr->Flags);
         public ref uint ID => ref Unsafe.AsRef<uint>(&NativePtr->ID);

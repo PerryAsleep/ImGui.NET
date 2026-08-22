@@ -342,6 +342,11 @@ namespace ImGuiNET
             uint ret = ImGuiNative.ImGuiWindow_GetID_Int((ImGuiWindow*)(NativePtr), n);
             return ret;
         }
+        public uint GetIDFromPos(Vector2 p_abs)
+        {
+            uint ret = ImGuiNative.ImGuiWindow_GetIDFromPos((ImGuiWindow*)(NativePtr), p_abs);
+            return ret;
+        }
         public uint GetIDFromRectangle(ImRect r_abs)
         {
             uint ret = ImGuiNative.ImGuiWindow_GetIDFromRectangle((ImGuiWindow*)(NativePtr), r_abs);
