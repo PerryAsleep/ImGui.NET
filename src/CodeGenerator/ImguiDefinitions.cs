@@ -28,6 +28,7 @@ namespace CodeGenerator
             "ImGuiDockNode",
             "ImGuiDockNodeFlags",
             "ImGuiDockNodeState",
+            "ImGuiErrorRecoveryState",
             "ImGuiItemStatusFlags",
             "ImGuiLastItemData",
             "ImGuiLayoutType",
@@ -430,7 +431,7 @@ namespace CodeGenerator
         public TypeReference(string name, string type, int asize, string templateType, EnumDefinition[] enums, string[] typeVariants)
         {
             Name = name;
-            Type = type.Replace("const", string.Empty).Trim();
+            Type = type.Replace("const", string.Empty).Replace("struct ", string.Empty).Trim();
 
 
             if (Type.StartsWith("ImVector_"))
@@ -610,7 +611,8 @@ namespace CodeGenerator
             FriendlyName = friendlyName;
             Parameters = parameters;
             DefaultValues = defaultValues;
-            ReturnType = returnType.Replace("const", string.Empty).Replace("inline", string.Empty).Trim();
+            ReturnType = returnType.Replace("const", string.Empty).Replace("inline", string.Empty)
+                .Replace("struct ", string.Empty).Trim();
             StructName = structName;
             IsMemberFunction = !string.IsNullOrEmpty(structName);
             Comment = comment;
